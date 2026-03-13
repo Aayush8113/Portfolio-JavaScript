@@ -1,0 +1,15 @@
+{
+  "name": "Aayush Tripathi | MERN Architect",
+  "short_name": "Aayush.dev",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#020617",
+  "background_color": "#020617",
+  "display": "standalone"
+}
