@@ -43,10 +43,10 @@
 // }
 
 
-
-
 /** @type {import('tailwindcss').Config} */
 import defaultTheme from 'tailwindcss/defaultTheme';
+import typography from '@tailwindcss/typography';
+import forms from '@tailwindcss/forms';
 
 export default {
   content: [
@@ -55,14 +55,13 @@ export default {
   ],
   theme: {
     extend: {
-      // 1. TYPOGRAPHY: Ensure 'Inter' is the default sans font
+      // 1. TYPOGRAPHY
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        mono: ['Fira Code', ...defaultTheme.fontFamily.mono], // Optional: Great for code blocks
+        mono: ['Fira Code', ...defaultTheme.fontFamily.mono],
       },
 
-      // 2. COLOR PALETTE EXTENSIONS
-      // We extend the palette to include specific "glass" colors for your cards
+      // 2. COLOR PALETTE
       colors: {
         glass: {
           100: 'rgba(255, 255, 255, 0.1)',
@@ -70,16 +69,16 @@ export default {
           300: 'rgba(255, 255, 255, 0.3)',
         },
         dark: {
-          900: '#020617', // Matches your body bg
+          900: '#020617',
           800: '#0f172a',
           700: '#1e293b',
         }
       },
 
-      // 3. ANIMATIONS (Cinematic Feels)
+      // 3. ANIMATIONS
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
+        float: 'float 6s ease-in-out infinite',
         'spin-slow': 'spin 8s linear infinite',
       },
       keyframes: {
@@ -101,9 +100,7 @@ export default {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
-    // Note: 'forms' plugin is great, but often conflicts with custom styled inputs.
-    // If your inputs look weird, try disabling this line.
-    require('@tailwindcss/forms'), 
+    typography,
+    forms,
   ],
 }
