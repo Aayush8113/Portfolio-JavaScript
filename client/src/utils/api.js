@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 // 1. Create Axios Instance
-const api = axios.create({ // Fixed typo: removed space
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+const api = axios.create({ 
+  // Uses relative '/api' in production (Vercel), and localhost in development
+  baseURL: import.meta.env.PROD ? '/api' : 'http://localhost:5000/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -41,7 +42,7 @@ api.interceptors.response.use(
 );
 
 // 4. AI Service Function
-export const chatWithAI = async (prompt) => { // Fixed typo: removed space
+export const chatWithAI = async (prompt) => { 
   try {
     const response = await api.post('/chat', { prompt });
     return response.data.reply;
