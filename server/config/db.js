@@ -10,6 +10,7 @@ if (!cached) {
 
 const connectDB = async () => {
   if (cached.conn) {
+    console.log('⚡ Using cached MongoDB connection');
     return cached.conn;
   }
 
@@ -20,7 +21,14 @@ const connectDB = async () => {
 
     mongoose.set('strictQuery', true);
 
-    cached.promise = mongoose.connect(process.env.MONGODB_URI, opts).then((mongoose) => {
+    // Checks for either variable name to prevent deployment crashes
+    const uri = process.env.MONGODB_URI || process.env.MONGO_URI;
+
+    if (!uri) {
+      throw new Error('❌ Please define the MONGODB_URI or MONGO_URI environment variable inside Vercel.');
+    }
+
+    cached.promise = mongoose.connect(uri, opts).then((mongoose) => {
       console.log('✅ New MongoDB Connection Established');
       return mongoose;
     });
