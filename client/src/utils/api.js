@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // 1. Create Axios Instance
-const api = axios.create({
+const api = axios.create({ // Fixed typo: removed space
   baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
   headers: {
     'Content-Type': 'application/json',
@@ -26,15 +26,14 @@ api.interceptors.response.use(
     return response;
   },
   (error) => {
-    // 👇 THE FIX: Silently ignore aborted requests (fixes Strict Mode canceled errors)
     if (axios.isCancel(error)) {
       return Promise.reject(error);
     }
 
-    const errorMessage = 
+    const errorMessage =
       error.response?.data?.message || 
       error.message || 
-      "Something went wrong";
+      "Something went wrong.";
 
     console.error('❌ API Error:', errorMessage);
     return Promise.reject({ ...error, message: errorMessage });
@@ -42,7 +41,7 @@ api.interceptors.response.use(
 );
 
 // 4. AI Service Function
-export const chatWithAI = async (prompt) => {
+export const chatWithAI = async (prompt) => { // Fixed typo: removed space
   try {
     const response = await api.post('/chat', { prompt });
     return response.data.reply;
