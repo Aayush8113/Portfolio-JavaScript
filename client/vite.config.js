@@ -16,6 +16,8 @@ export default defineConfig({
     }
   },
   build: {
+    outDir: 'dist', // Ensures Vercel knows exactly where the built files go
+    emptyOutDir: true, // Cleans up the folder before building
     minify: 'terser', 
     terserOptions: {
       compress: {
