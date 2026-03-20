@@ -18,7 +18,7 @@ import { useRef } from "react";
 import {
   SiDocker,
   SiExpress,
-  SiFigma,
+  SiPython,
   SiGit,
   SiJavascript,
   SiMongodb,
@@ -243,8 +243,8 @@ const AboutPage = () => {
               </TiltCard>
 
               <div className="flex flex-wrap justify-center gap-4 mt-10">
-                <StatBadge value="3+" label="Years Exp" />
-                <StatBadge value="20+" label="Projects" />
+                <StatBadge value="1+" label="Years Exp" />
+                <StatBadge value="7+" label="Projects" />
                 <StatBadge value="100%" label="Commitment" />
               </div>
             </div>
@@ -356,7 +356,7 @@ const AboutPage = () => {
               <SkillOrb skill="React" color="sky" icon={<SiReact className="text-sky-400" />} />
               <SkillOrb skill="Next.js" color="slate" icon={<SiNextdotjs className="text-white" />} />
               <SkillOrb skill="Tailwind" color="cyan" icon={<SiTailwindcss className="text-cyan-400" />} />
-              <SkillOrb skill="Figma" color="pink" icon={<SiFigma className="text-pink-400" />} />
+              <SkillOrb skill="python" color="pink" icon={<SiPython className="text-yellow-400" />} />
             </div>
           </TiltCard>
 

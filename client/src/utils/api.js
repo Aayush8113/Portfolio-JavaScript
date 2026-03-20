@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-// 1. Create Axios Instance
 const api = axios.create({ 
-  // Uses relative '/api' in production (Vercel), and localhost in development
   baseURL: import.meta.env.PROD ? '/api' : 'http://localhost:5000/api',
   headers: {
     'Content-Type': 'application/json',
@@ -10,7 +8,6 @@ const api = axios.create({
   timeout: 10000, 
 });
 
-// 2. Request Interceptor
 api.interceptors.request.use(
   (config) => {
     if (import.meta.env.DEV) {
@@ -21,7 +18,6 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// 3. Response Interceptor
 api.interceptors.response.use(
   (response) => {
     return response;
@@ -30,18 +26,15 @@ api.interceptors.response.use(
     if (axios.isCancel(error)) {
       return Promise.reject(error);
     }
-
     const errorMessage =
       error.response?.data?.message || 
       error.message || 
       "Something went wrong.";
-
     console.error('❌ API Error:', errorMessage);
     return Promise.reject({ ...error, message: errorMessage });
   }
 );
 
-// 4. AI Service Function
 export const chatWithAI = async (prompt) => { 
   try {
     const response = await api.post('/chat', { prompt });

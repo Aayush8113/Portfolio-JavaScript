@@ -13,30 +13,25 @@
       }
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "/server/server.js"
+      "src": "/api/(.*)",
+      "dest": "/server/server.js"
     },
     {
-      "source": "/assets/(.*)",
-      "destination": "/client/dist/assets/$1"
+      "handle": "filesystem"
     },
     {
-      "source": "/projects/(.*)",
-      "destination": "/client/dist/projects/$1"
+      "src": "/assets/(.*)",
+      "dest": "/client/dist/assets/$1"
     },
     {
-      "source": "/favicon.svg",
-      "destination": "/client/dist/favicon.svg"
+      "src": "/projects/(.*)",
+      "dest": "/client/dist/projects/$1"
     },
     {
-      "source": "/site.webmanifest",
-      "destination": "/client/dist/site.webmanifest"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/client/dist/index.html"
+      "src": "/(.*)",
+      "dest": "/client/dist/index.html"
     }
   ]
 }

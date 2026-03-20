@@ -6,7 +6,6 @@ export default defineConfig({
   server: {
     port: 5173,
     open: true,
-    // SMART PROXY: Fixes local CORS issues during development
     proxy: {
       '/api': {
         target: 'http://localhost:5000',
@@ -16,8 +15,8 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: 'dist', // Ensures Vercel knows exactly where the built files go
-    emptyOutDir: true, // Cleans up the folder before building
+    outDir: 'dist', 
+    emptyOutDir: true, 
     minify: 'terser', 
     terserOptions: {
       compress: {
@@ -27,11 +26,20 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-ui': ['framer-motion', 'lucide-react', 'react-icons'],
-          'vendor-utils': ['axios', 'react-qr-code'],
-        },
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-router')) {
+              return 'vendor-react';
+            }
+            if (id.includes('framer-motion') || id.includes('lucide') || id.includes('react-icons')) {
+              return 'vendor-ui';
+            }
+            if (id.includes('axios') || id.includes('react-qr-code')) {
+              return 'vendor-utils';
+            }
+            return 'vendor'; 
+          }
+        }
       },
     },
     modulePreload: {

@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-// Vercel Serverless behavior: Define a global cache to prevent 
-// connecting to the DB on every single request.
 let cached = global.mongoose;
 
 if (!cached) {
@@ -21,11 +19,10 @@ const connectDB = async () => {
 
     mongoose.set('strictQuery', true);
 
-    // Checks for either variable name to prevent deployment crashes
     const uri = process.env.MONGODB_URI || process.env.MONGO_URI;
 
     if (!uri) {
-      throw new Error('❌ Please define the MONGODB_URI or MONGO_URI environment variable inside Vercel.');
+      throw new Error('❌ Please define the MONGODB_URI environment variable.');
     }
 
     cached.promise = mongoose.connect(uri, opts).then((mongoose) => {

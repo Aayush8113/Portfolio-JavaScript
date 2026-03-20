@@ -101,9 +101,9 @@ const TechTicker = () => {
 // 2. Upgraded Glassmorphism Stats Dashboard
 const StatsSection = () => {
   const stats = [
-    { icon: Code2, label: "Commits Pushed", value: "1,200+", color: "text-blue-400", glow: "group-hover:shadow-[0_0_30px_rgba(96,165,250,0.15)]", border: "group-hover:border-blue-500/30" },
+    { icon: Code2, label: "Commits Pushed", value: "500+", color: "text-blue-400", glow: "group-hover:shadow-[0_0_30px_rgba(96,165,250,0.15)]", border: "group-hover:border-blue-500/30" },
     { icon: Database, label: "System Uptime", value: "99.9%", color: "text-emerald-400", glow: "group-hover:shadow-[0_0_30px_rgba(52,211,153,0.15)]", border: "group-hover:border-emerald-500/30" },
-    { icon: Cpu, label: "Projects Shipped", value: "25+", color: "text-purple-400", glow: "group-hover:shadow-[0_0_30px_rgba(192,132,252,0.15)]", border: "group-hover:border-purple-500/30" },
+    { icon: Cpu, label: "Projects Shipped", value: "7+", color: "text-purple-400", glow: "group-hover:shadow-[0_0_30px_rgba(192,132,252,0.15)]", border: "group-hover:border-purple-500/30" },
     { icon: Globe, label: "Happy Clients", value: "100%", color: "text-amber-400", glow: "group-hover:shadow-[0_0_30px_rgba(251,191,36,0.15)]", border: "group-hover:border-amber-500/30" },
   ];
 
