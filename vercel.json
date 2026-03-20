@@ -19,8 +19,24 @@
       "destination": "/server/server.js"
     },
     {
+      "source": "/assets/(.*)",
+      "destination": "/client/dist/assets/$1"
+    },
+    {
+      "source": "/projects/(.*)",
+      "destination": "/client/dist/projects/$1"
+    },
+    {
+      "source": "/favicon.svg",
+      "destination": "/client/dist/favicon.svg"
+    },
+    {
+      "source": "/site.webmanifest",
+      "destination": "/client/dist/site.webmanifest"
+    },
+    {
       "source": "/(.*)",
-      "destination": "/client/dist/$1"
+      "destination": "/client/dist/index.html"
     }
   ]
 }
