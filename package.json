@@ -1,8 +1,10 @@
 {
   "name": "portfolio-monorepo",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
     "build": "npm run build --prefix client",
-    "install-all": "npm install && npm install --prefix client && npm install --prefix server"
+    "install-all": "npm install && npm install --prefix client && npm install --prefix server",
+    "vercel-build": "npm run build --prefix client"
   }
 }
